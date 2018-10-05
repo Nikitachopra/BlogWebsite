@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, title:"Admin Users" do
   permit_params :email, :password, :password_confirmation
 
   index do
