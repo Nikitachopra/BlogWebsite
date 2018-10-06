@@ -1,1 +1,111 @@
-<%= image_tag Article.last.image.url %>
+<% count = 0 %>
+<%@article.each do |article|%>
+<%#byebug.pry%>
+  <%if count == 3 || count == 0%>
+  <%count = 0%>
+  <div class="wrapper row3">
+    <section class="hoc container clear split"> 
+      <!-- ################################################################################################ -->
+      
+      <div class="group latest">
+      <%if  count==0 %>
+      <%count += 1%>
+        <article class="one_third  first">
+          <figure><a href="#"><%= image_tag article.image.url %></a>
+            
+          </figure>
+          <div class="txtwrap">
+            <h4 class="heading"><%= article.title%></h4>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#"><%= article.author_name %></a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">Date</a></li>
+            </ul>
+            <p><%= article.description[0..100]%>&hellip;</p>
+            <footer><%= link_to article_path(article.id) do %>Read More &raquo;<%end%></footer>
+          </div>
+        </article>
+        <%end%>
+      <%else %>
+      <%count += 1%>
+        <article class="one_third">
+          <figure><a href="#"><%= image_tag article.image.url %></a>
+            
+          </figure>
+          <div class="txtwrap">
+            <h4 class="heading"><%= article.title%></h4>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
+            </ul>
+            <p><%= article.description[0..100] %>&hellip;</p>
+            <footer><%= link_to article_path(article.id) do %>Read More &raquo;<%end%></footer>
+          </div>
+        </article>
+      <%end%>
+      <%if count==3 || count==0%>
+      </div>
+      <!-- ################################################################################################ --> 
+    </section>
+  </div>
+  <%end%>
+<%end%>
+<%= paginate @article%>
+
+<!-- <div class="wrapper row3">
+    <section class="hoc container clear"> 
+      <div class="sectiontitle">
+        <h6 class="heading">Etiam mattis elit iaculis</h6>
+        <p>Interdum libero ac sed justo nibh condimentum non massa a fermentum ultricies</p>
+      </div>
+      <div class="group latest">
+        <article class="one_third first">
+          <figure><a href="#"><img src="assets/320x220.png" alt=""></a>
+            <figcaption>
+              <time datetime="2045-04-06T08:15+00:00"><strong>06</strong> <em>Apr</em></time>
+            </figcaption>
+          </figure>
+          <div class="txtwrap">
+            <h4 class="heading">Ex etiam auctor blandit</h4>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
+            </ul>
+            <p>Tellus accumsan et egestas eu semper ac odio aenean quis dapibus massa sit amet tincidunt dui nulla facilisi&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+        <article class="one_third">
+          <figure><a href="#"><img src="images/demo/320x220.png" alt=""></a>
+            <figcaption>
+              <time datetime="2045-04-05T08:15+00:00"><strong>05</strong> <em>Apr</em></time>
+            </figcaption>
+          </figure>
+          <div class="txtwrap">
+            <h4 class="heading">Risus in commodo arcu</h4>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
+            </ul>
+            <p>Aliquam erat volutpat convallis nunc at risus tempor nec suscipit erat efficitur et elit lectus vestibulum ante&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+        <article class="one_third">
+          <figure><a href="#"><img src="images/demo/320x220.png" alt=""></a>
+            <figcaption>
+              <time datetime="2045-04-04T08:15+00:00"><strong>04</strong> <em>Apr</em></time>
+            </figcaption>
+          </figure>
+          <div class="txtwrap">
+            <h4 class="heading">Gravida eu sed elit</h4>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
+            </ul>
+            <p>Cubilia curae aliquam feugiat laoreet malesuada elementum habitant morbi tristique et netus et fames ac&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div> -->
