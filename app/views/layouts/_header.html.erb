@@ -1,0 +1,27 @@
+<div class="header11">
+  <img src="/assets/cropped-swaminathan.jpg">
+</div>
+
+<div id="navbar">
+  <a class="active" href="/">Home</a>
+  <a href="javascript:void(0)">Articles</a>
+  <a href="javascript:void(0)">About <%= ORG_NAME%></a>
+</div>
+
+
+<script type="text/javascript">
+	window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+  var offset = $("#navbar").offset().top + $("#navbar").height();
+  $('.my_side_bar').offset({top:offset});
+}
+</script>

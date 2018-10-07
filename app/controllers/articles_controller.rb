@@ -11,11 +11,12 @@ class ArticlesController < ApplicationController
 		@article.save
 	end
 	def index
-		@article = Article.all
-		@article = @article.page(params[:page]).per(6)
+		@articles = Article.all.order('created_at DESC')
+		@articles = @articles.page(params[:page]).per(6)
 	end
 
 	def show
 		@article = Article.find(params[:id])
+		@articles = Article.all
 	end
 end

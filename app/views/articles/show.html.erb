@@ -1,12 +1,45 @@
-<div class="wrapper row3">
+<%= render "layouts/header"%>
+<div class=" row3">
 	<section class="hoc container clear">
 		<div class="group latest">
 			<div class="txtwrap">
 				<%= image_tag @article.image.url %>
-				<h4 class="heading"><%= @article.title%></h4>
-				<%= @article.description %>
+				<h4 class="heading no_padding"><%= @article.title%></h4>
+				<ul class="nospace meta padding2">
+              <li class="one_line"><i class="fa fa-calendar"></i><%= @article.created_at.strftime("%e %b %Y") %></li>
+              <li class="one_line"><i class="fa fa-user"></i> <%= @article.author_name %></li>
+              <li class="one_line"><i class="fa fa-comments"></i> <a href="#"><%= @article.comments.count %> Comments</a></li>
+            </ul>
+				<div style="padding-bottom: 20px;"><%= @article.description %></div>
 			</div>
 		</div>
+		<%current_id = @article.id %>
+		<%previous_id = current_id %>
+		<%next_id = current_id%>
+		<%while previous_id > 0 %>
+			<%previous_id -= 1%>
+			<%if Article.where(id: previous_id).present? %>
+			 <%break%>
+			<%end%>
+		<%end%>
+		<div class="">
+		<%unless previous_id == current_id %>
+			<i class="fa fa-long-arrow-left"><%= link_to Article.where(id: previous_id).first.title, article_path(previous_id) %></i>
+		<%end%>
+		</div>
+		<% while next_id < Article.last.id %>
+			<%next_id += 1%>
+			<%if Article.where(id: next_id).present? %>
+			 <%break%>
+			<%end%>
+		<%end%>
+		<div class="right">
+		<%unless next_id == current_id %>
+			<%= link_to Article.where(id: next_id).first.title, article_path(next_id) %><i class="fa fa-long-arrow-right"></i>
+		<%end%>
+		</div>
 	</section>
-	
+	<div id="respond">
+		<h3 class="reply-title">What da you think?</h3>
+	</div>
 </div>
