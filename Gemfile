@@ -51,6 +51,10 @@ gem 'devise'
 gem "parsley-rails"
 #pagination gem
 gem 'kaminari'
+# Delayed job Gems
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'daemon-spawn'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

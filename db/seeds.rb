@@ -6,3 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+EmailTemplate.create(subject: "New Article Posted", template: "new_article_posted", content: "<p><img alt='' src='%{image_url}'></p><p>%{title}</p>%{description}</p>.")
