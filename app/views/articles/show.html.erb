@@ -3,7 +3,7 @@
 	<section class="hoc container clear">
 		<div class="group latest">
 			<div class="txtwrap">
-				<%= image_tag @article.image.url %>
+				<%= image_tag @article.image.url if @article.image.present? %>
 				<h4 class="heading no_padding"><%= @article.title%></h4>
 				<ul class="nospace meta padding2">
               <li class="one_line"><i class="fa fa-calendar"></i><%= @article.created_at.strftime("%e %b %Y") %></li>
@@ -24,7 +24,7 @@
 		<%end%>
 		<div class="">
 		<%unless previous_id == current_id %>
-			<i class="fa fa-long-arrow-left"><%= link_to Article.where(id: previous_id).first.title, article_path(previous_id) %></i>
+			<i class="fa fa-long-arrow-left"><%= link_to Article.where(id: previous_id).first.title[0..90], article_path(previous_id) %></i>
 		<%end%>
 		</div>
 		<% while next_id < Article.last.id %>
@@ -35,11 +35,19 @@
 		<%end%>
 		<div class="right">
 		<%unless next_id == current_id %>
-			<%= link_to Article.where(id: next_id).first.title, article_path(next_id) %><i class="fa fa-long-arrow-right"></i>
+			<%= link_to Article.where(id: next_id).first.title[0..90], article_path(next_id) %><i class="fa fa-long-arrow-right"></i>
 		<%end%>
 		</div>
 	</section>
 	<div id="respond">
-		<h3 class="reply-title">What da you think?</h3>
+		<h3 class="reply-title">What do you think?</h3>
+		<%= form_for Comment.new do |f|%>
+
+		<%end%>
+	</div>
+	<div>
+		<% @article.comments.each do |comment| %>
+			<%= comment.user_comment %>
+		<%end%>
 	</div>
 </div>

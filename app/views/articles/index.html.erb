@@ -40,11 +40,15 @@
       <%else %>
       <%count += 1%>
         <article class="one_third">
-          <a style="max-width: 200px; max-height: 200px; width: 200px; height: 200px;" href="#"><%= image_tag article.image.url %></a>
+          <%if article.image.present? %>
+            <a href="#"><%= image_tag article.image.url %></a>
+          <%else%>
+            <a href="#" class="no-image"></a>
+          <%end%>
             
          
           <div class="txtwrap">
-            <h4 class="heading"><%= link_to article.title, article_path(article.id) %></h4>
+            <h4 class="heading"><%= link_to article.title[0..60], article_path(article.id) %></h4>
             <ul class="nospace meta">
               <li><i class="fa fa-calendar"></i><%= article.created_at.strftime("%e %b %Y") %></li>
               <li><i class="fa fa-user"></i> <%= article.author_name %></li>
@@ -62,16 +66,35 @@
   </div>
   <%end%>
 <%end%>
-<%= paginate @articles%>
 </div>
+<div class="bottom"><%= paginate @articles%></div>
+
+
 <script type="text/javascript">
+  $(document).ready(function(){
+    // var offset = $("#navbar").offset().top + $("#navbar").height();
+    // $('.right-margin').offset({top:offset});
+    // $('right-margin').css({'display' : 'block'});
+    var div = document.getElementById("remove_it");
+    if( $(this).width() < 700 ){
+      div.classList.remove("my_side_bar");
+      $("#remove_it").offset({top: $(".right-margin").offset().top + $(".right-margin").height()});
+    }
+  });
   $(window).resize(function() {
     var div = document.getElementById("remove_it");
     if( $(this).width() < 700 ) {
         // $("#to_be_changed").classList.add("rightest-margin");
         div.classList.remove("my_side_bar");
         // $(".w3-card").classList.remove('my_side_bar');
-        $("#remove_it").offset({top: $(".right-margin").offset().top + $(".right-margin").height()});
+        $("#remove_it").offset({top: $(".bottom").offset().top + $(".bottom").height()});
+        div.classList.add("padded-bottom");
+
+    } else{
+      div.classList.add("my_side_bar");
+      div.classList.remove("padded-bottom");
+      var offset = $("#navbar").offset().top + $("#navbar").height();
+      $('.my_side_bar').offset({top:offset});
     }
 });
 
