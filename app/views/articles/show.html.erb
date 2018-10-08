@@ -23,7 +23,8 @@
 			<%end%>
 		<%end%>
 		<div class="">
-		<%unless previous_id == current_id %>
+		<%previous_id = current_id if previous_id == 0%>
+		<%unless previous_id == current_id  %>
 			<i class="fa fa-long-arrow-left"><%= link_to Article.where(id: previous_id).first.title[0..90], article_path(previous_id) %></i>
 		<%end%>
 		</div>
@@ -46,8 +47,8 @@
 		<%end%>
 	</div>
 	<div>
-		<% @article.comments.each do |comment| %>
-			<%= comment.user_comment %>
+		<% @article.user_comments.each do |comment| %>
+			<%= comment.content %>
 		<%end%>
 	</div>
 </div>
