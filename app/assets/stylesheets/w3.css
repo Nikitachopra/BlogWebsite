@@ -218,3 +218,5 @@
 @media (min-width:993px){.w3-modal-content{width:900px}.w3-hide-large{display:none!important}.w3-sidebar.w3-collapse{display:block!important}}
 @media (max-width:992px){.w3-sidebar.w3-collapse{display:none}.w3-main{margin-left:0!important;margin-right:0!important}}
 .w3-button:hover{color:#000!important;background-color:#ccc!important}
+
+.colored-div{background-color: #4CAF50!important; color: white!important;}

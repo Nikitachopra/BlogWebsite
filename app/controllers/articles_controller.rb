@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 	end
 	def index
 		@articles = Article.all.order('created_at DESC')
+		@articles = article_search(params[:sq],@articles) if params[:sq] && params[:sq].length > 1
 		@articles = @articles.page(params[:page]).per(6)
 	end
 
@@ -21,4 +22,10 @@ class ArticlesController < ApplicationController
 	end
 	def new_page
 	end
+	  # Article Search
+	  def article_search(query, list_articles)
+	    articles = Article.arel_table
+	    search_articles = list_articles.where("title LIKE ?","%#{query}%")
+	    return search_articles
+	  end
 end
