@@ -31,7 +31,7 @@
             <ul class="nospace meta">
               <li><i class="fa fa-calendar"></i><%= article.created_at.strftime("%e %b %Y") %></li>
               <li><i class="fa fa-user"></i> <%= article.author_name %></li>
-              <li><i class="fa fa-comments"></i> <a href="#"><%= article.comments.count %> Comments</a></li>
+              <li><i class="fa fa-comments"></i> <%= link_to article_path(article.id) do %><%= article.comments.count %> Comments<%end%></li>
             </ul>
             <%if article.image.present? %>
             <p><%= article.description[0..100]%>&hellip;</p>
