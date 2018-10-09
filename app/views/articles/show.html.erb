@@ -12,7 +12,7 @@
 				<ul class="nospace meta padding2">
               <li class="one_line"><i class="fa fa-calendar"></i><%= @article.created_at.strftime("%e %b %Y") %></li>
               <li class="one_line"><i class="fa fa-user"></i> <%= @article.author_name %></li>
-              <li class="one_line"><i class="fa fa-comments"></i> <a href="#"><%= @article.comments.count %> Comments</a></li>
+              <li class="one_line"><i class="fa fa-comments"></i> <a href="#respond"><%= @article.comments.count %> Comments</a></li>
             </ul>
 				<div style="padding-bottom: 20px;"><%= @article.description %></div>
 			</div>
@@ -44,18 +44,20 @@
 		<%end%>
 		</div>
 	</section>
-	<div id="respond">
+	<div id="respond" style="margin: 20px;">
 		<h3 class="reply-title">What do you think?</h3>
 		<%= form_for UserComment.new, :html => {:"data-validate" => "parsley"} do |f|%>
 			<%= f.hidden_field :article_id, value: @article.id %>
 			Comment: <%= f.text_field :content, 'data-parsley-required'=>"true" %>
-			Name:<%= f.text_field :name, 'data-parsley-required'=>"true" %>
-			Email:<%= f.text_field :email, 'data-parsley-required'=>"true" %>
-			<%= f.text_field :website %>
-			<%= f.submit "Post", class: "colored-div" %>
+			<div id="to_be_shown_later" style="display: none;">
+				Name:<%= f.text_field :name, 'data-parsley-required'=>"true" %>
+				Email:<%= f.text_field :email, 'data-parsley-required'=>"true" %>
+				Website:<%= f.text_field :website %>
+				<%= f.submit "Post", class: "colored-div", style: "background-color: #4CAF50!important; border:none!important;" %>
+			</div>
 		<%end%>
 	</div>
-	<div>
+	<div style="margin: 20px;">
 		<% @article.user_comments.each do |comment| %>
 			<%= comment.content %>
 		<%end%>
@@ -63,3 +65,10 @@
 </div>
 </div>
 <%= render "layouts/footer"%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#user_comment_content").on("click",function(){
+		$("#to_be_shown_later").css({'display' : 'block'});
+	});
+	});
+</script>

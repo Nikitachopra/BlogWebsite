@@ -72,6 +72,27 @@
   <%end%>
 <%end%>
 <div class="bottom"><%= paginate @articles%></div>
+<div id="lower_side_bar" class="w3-bar-block w3-card " style="display: none; width: 100%!important;">
+  <!-- <h3 class="w3-bar-item">Menu</h3> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 1</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 2</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
+  <div class="w3-bar-item">
+    <form class="" action="/articles" method="get">
+      <input type="search" name="sq" placeholder="Search">
+      <button type="submit colored-div"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div class="w3-bar-item colored-div">
+    Recieve new posts via email
+  </div>
+  <div class="w3-bar-item">
+    <form class="" action="/" method="post">
+      <input type="text" name="email">
+      <button type="submit colored-div w3-button">Subscribe</button>
+    </form>
+  </div>
+</div>
 </div></td>
   </tr></table>
     <%= render "layouts/footer"%>
@@ -85,18 +106,22 @@
     // $('right-margin').css({'display' : 'block'});
     var div = document.getElementById("remove_it");
     if( $(this).width() < 700 ){
-      div.classList.remove("my_side_bar");
-      $("#remove_it").offset({top: $(".right-margin").offset().top + $(".right-margin").height()});
+      // div.classList.remove("my_side_bar");
+      // $("#remove_it").offset({top: $(".right-margin").offset().top + $(".right-margin").height()});
+      // $("#remove_it").css({'display' : 'none'});
+      // $("#lower_side_bar").css({'display' : 'block'});
     }
   });
   $(window).resize(function() {
     var div = document.getElementById("remove_it");
     if( $(this).width() < 700 ) {
         // $("#to_be_changed").classList.add("rightest-margin");
-        div.classList.remove("my_side_bar");
+        // div.classList.remove("my_side_bar");
         // $(".w3-card").classList.remove('my_side_bar');
-        $("#remove_it").offset({top: $(".bottom").offset().top + $(".bottom").height()});
-        div.classList.add("padded-bottom");
+        // $("#remove_it").offset({top: $(".bottom").offset().top + $(".bottom").height()});
+        // div.classList.add("padded-bottom");
+      //   $("#remove_it").css({'display' : 'none'});
+      // $("#lower_side_bar").css({'display' : 'block'});
 
     } else{
       div.classList.add("my_side_bar");

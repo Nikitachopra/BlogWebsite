@@ -377,6 +377,8 @@ table a, #comments a{background-color:inherit;}
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
 @media screen and (min-width:978px){
+	#remove_it{display: block!important;}
+	#lower_side_bar{display: none!important;}
 	.hoc{max-width:978px;}
 }
 
@@ -419,6 +421,8 @@ table a, #comments a{background-color:inherit;}
 	.cta > :first-child{margin-top:0;}
 	/*.right-margin {margin-right: 0% !important;}*/
 	/*#footer{padding-bottom:50px;} Not neccessary - just looks better */
+	#remove_it{display: none!important;}
+	#lower_side_bar{display: block!important;}
 }
 
 
