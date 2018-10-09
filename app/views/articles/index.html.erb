@@ -1,6 +1,11 @@
 <%= render "layouts/header"%>
-<%= render "layouts/side_bar"%>
+<%#= render "layouts/side_bar"%>
+<table>
+  <tr>
+    <td>
 <div id = "to_be_changed" class="right-margin">
+    <%= render "layouts/side_bar"%>
+
 <% count = 0 %>
 <%@articles.each do |article|%>
 <%#byebug.pry%>
@@ -66,8 +71,11 @@
   </div>
   <%end%>
 <%end%>
-</div>
 <div class="bottom"><%= paginate @articles%></div>
+</div></td>
+  </tr></table>
+    <%= render "layouts/footer"%>
+
 
 
 <script type="text/javascript">

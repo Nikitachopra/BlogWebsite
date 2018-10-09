@@ -13,5 +13,6 @@
  *= require_tree .
  *= require_fontawesome-4.6.3.min
  *= require_layout
+ *= require_w3
  *= require_self
  */

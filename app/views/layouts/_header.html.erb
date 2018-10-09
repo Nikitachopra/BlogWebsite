@@ -23,5 +23,7 @@ function myFunction() {
   }
   var offset = $("#navbar").offset().top + $("#navbar").height();
   $('.my_side_bar').offset({top:offset});
+  var footer_top = $("#footer").offset().top;
+  $('.my_side_bar').css('bottom',footer_top)
 }
 </script>

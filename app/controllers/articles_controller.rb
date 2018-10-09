@@ -19,4 +19,6 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@articles = Article.all
 	end
+	def new_page
+	end
 end
