@@ -2,7 +2,7 @@ ActiveAdmin.register Article do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :list, :of, :title, :description, :image, :author_name, :on, :model
+permit_params :list, :of, :title, :description, :image, :author_name, :featured, :on, :model
 #
 # or
 #
@@ -22,7 +22,6 @@ index do
 		article.description[0..95]
 	end
 	column :created_at
-	column :author_name
 	actions
 end
 
@@ -44,7 +43,7 @@ controller do
 	private
 
 	def article_params
-		params.require(:article).permit(:title, :description, :image, :author_name)
+		params.require(:article).permit(:title, :description, :image, :author_name, :featured)
 	end
 end
 

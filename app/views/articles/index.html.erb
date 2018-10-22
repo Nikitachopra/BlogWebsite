@@ -31,7 +31,7 @@
             <ul class="nospace meta">
               <li><i class="fa fa-calendar"></i><%= article.created_at.strftime("%e %b %Y") %></li>
               <li><i class="fa fa-user"></i> <%= article.author_name %></li>
-              <li><i class="fa fa-comments"></i> <%= link_to article_path(article.id) do %><%= article.comments.count %> Comments<%end%></li>
+              <li><i class="fa fa-comments"></i> <%= link_to article_path(article.id) do %><%= article.user_comments.count %> Comments<%end%></li>
             </ul>
             <%if article.image.present? %>
             <p><%= article.description[0..100]%>&hellip;</p>
@@ -57,7 +57,7 @@
             <ul class="nospace meta">
               <li><i class="fa fa-calendar"></i><%= article.created_at.strftime("%e %b %Y") %></li>
               <li><i class="fa fa-user"></i> <%= article.author_name %></li>
-              <li><i class="fa fa-comments"></i> <a href="#"><%= article.comments.count %> Comments</a></li>
+              <li><i class="fa fa-comments"></i> <%= link_to article_path(article.id) do %><%= article.user_comments.count %> Comments<%end%></li>
             </ul>
             <p><%= article.description[0..100] %>&hellip;</p>
             <footer><%= link_to article_path(article.id) do %>Read More &raquo;<%end%></footer>
@@ -73,26 +73,10 @@
 <%end%>
 <div class="bottom"><%= paginate @articles%></div>
 <div id="lower_side_bar" class="w3-bar-block w3-card " style="display: none; width: 100%!important;">
-  <!-- <h3 class="w3-bar-item">Menu</h3> -->
-  <!-- <a href="#" class="w3-bar-item w3-button">Link 1</a> -->
-  <!-- <a href="#" class="w3-bar-item w3-button">Link 2</a> -->
-  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
-  <div class="w3-bar-item"  style="padding-top: 30px;">
-    <form class="" action="/articles" method="get">
-      <input type="search" name="sq" placeholder="Search"  style="display: inline;">
-      <button type="submit colored-div"><i class="fa fa-search" style="display: inline!important;background-color: #4CAF50!important; border:none!important;"></i></button>
-    </form>
-  </div>
-  <div class="w3-bar-item colored-div"  style="margin-top: 30px;">
-    Recieve new posts via email
-  </div>
-  Enter your email address to receive new posts immediately by email.
-  <div class="w3-bar-item" style="padding-top: 20px;">
-    <form class="" action="/" method="post">
-      <input type="text" name="email">
-      <button type="submit colored-div w3-button" style="margin: 5px; background-color: #4CAF50!important; border:none!important;">Subscribe</button>
-    </form>
-  </div>
+  <h4>Featured Articles:</h4>
+    <% @featured_articles.each do |fa| %>
+      <p><%= link_to fa.title, article_path(fa.id) %></p>
+    <%end%>
 </div>
 </div></td>
   </tr></table>

@@ -443,7 +443,7 @@ table a, #comments a{background-color:inherit;}
 
 	.hoc, .split{max-width:none; width:100;}
 	.split section{float:none; width:100%; padding:10% 5%;}
-	/*.right-margin {margin-right: 0%;}*/
+	.right-margin {padding-left: 11%;}
 }
 
 .header11 {
@@ -523,7 +523,11 @@ table a, #comments a{background-color:inherit;}
 	margin-right: 0%;
 }*/
 
-
+.text-wrapped{
+	white-space: pre-wrap;
+	/*word-break: break-all;*/
+	text-align: justify;
+}
 
 /*.padded-bottom {*/
 	/*margin-top: 50px!important;*/
