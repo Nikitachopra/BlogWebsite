@@ -16,6 +16,8 @@
             </ul>
 				<div style="padding-bottom: 20px;"><%= @article.description %></div>
 			</div>
+			<strong>Share this article:</strong>
+			<%= social_share_button_tag(@article.title) %>
 		</div>
 		<%current_id = @article.id %>
 		<%previous_id = current_id %>
@@ -41,10 +43,11 @@
 		<div class="right">
 		<%unless next_id == current_id %>
 			<%= link_to Article.where(id: next_id).first.title[0..90], article_path(next_id) %><i class="fa fa-long-arrow-right"></i>
+			<%#= link_to Article.first.url, article_path(next_id) %>
 		<%end%>
 		</div>
 	</section>
-	<div id="respond" style="margin: 20px;">
+	<div id="respond" style="margin: 20px; padding-bottom: 40px;">
 		<h3 class="reply-title">What do you think?</h3>
 		<%= form_for UserComment.new, :html => {:"data-validate" => "parsley"} do |f|%>
 			<%= f.hidden_field :article_id, value: @article.id %>
@@ -57,11 +60,37 @@
 			</div>
 		<%end%>
 	</div>
-	<div style="margin: 20px;">
+	<h4 style="padding-left: 20px;">Comments: </h4>
+	<div style="padding: 20px; padding-top: 0;">
 		<% @article.user_comments.each do |comment| %>
+		<!-- <h4> -->
 			<%= comment.content %>
+		<!-- </h4> -->
+		<sub>by <%= comment.name%></sub>
 		<%end%>
 	</div>
+</div>
+<div id="lower_side_bar" class="w3-bar-block w3-card " style="display: none; width: 100%!important;">
+  <!-- <h3 class="w3-bar-item">Menu</h3> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 1</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 2</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
+  <div class="w3-bar-item"  style="padding-top: 30px;">
+    <form class="" action="/articles" method="get">
+      <input type="search" name="sq" placeholder="Search"  style="display: inline;">
+      <button type="submit colored-div"><i class="fa fa-search" style="display: inline!important;background-color: #4CAF50!important; border:none!important;"></i></button>
+    </form>
+  </div>
+  <div class="w3-bar-item colored-div"  style="margin-top: 30px;">
+    Recieve new posts via email
+  </div>
+  Enter your email address to receive new posts immediately by email.
+  <div class="w3-bar-item" style="padding-top: 20px;">
+    <form class="" action="/" method="post">
+      <input type="text" name="email">
+      <button type="submit colored-div w3-button" style="margin: 5px; background-color: #4CAF50!important; border:none!important;">Subscribe</button>
+    </form>
+  </div>
 </div>
 </div>
 <%= render "layouts/footer"%>
@@ -71,4 +100,25 @@
 		$("#to_be_shown_later").css({'display' : 'block'});
 	});
 	});
+	// $("#user_comment_content").on("focusout",function(data){
+	// 	console.log(data.target);
+	// });
+	$(window).resize(function() {
+    var div = document.getElementById("remove_it");
+    if( $(this).width() < 700 ) {
+        // $("#to_be_changed").classList.add("rightest-margin");
+        // div.classList.remove("my_side_bar");
+        // $(".w3-card").classList.remove('my_side_bar');
+        // $("#remove_it").offset({top: $(".bottom").offset().top + $(".bottom").height()});
+        // div.classList.add("padded-bottom");
+      //   $("#remove_it").css({'display' : 'none'});
+      // $("#lower_side_bar").css({'display' : 'block'});
+
+    } else{
+      div.classList.add("my_side_bar");
+      div.classList.remove("padded-bottom");
+      var offset = $("#navbar").offset().top + $("#navbar").height();
+      $('.my_side_bar').offset({top:offset});
+    }
+});
 </script>

@@ -1,7 +1,7 @@
 jQuery("#backtotop").click(function () {
     jQuery("body,html").animate({
         scrollTop: 0
-    }, 600);
+    }, 2000);
 });
 jQuery(window).scroll(function () {
     if (jQuery(window).scrollTop() > 150) {

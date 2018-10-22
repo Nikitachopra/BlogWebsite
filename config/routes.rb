@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :user_comments
+  get 'about_us', to: "about_us#index"
   root 'articles#index'
 end

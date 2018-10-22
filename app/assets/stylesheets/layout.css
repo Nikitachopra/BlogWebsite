@@ -297,7 +297,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#6AAEBF;}
 .row2{color:#474747; background-color:#F7F7F7;}
 .row3{color:#474747; background-color:#FFFFFF;}
 .row4{color:#CBCBCB; background-color:#252525;}
-.row5, .row5 a{color:#CBCBCB; background-color:#141414;}
+.row5, .row5 a{color:#CBCBCB; background: linear-gradient(90deg, #232526 10%, #414345 90%);}
 
 
 /* Header */
@@ -327,7 +327,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#6AAEBF;}
 
 /* Footer */
 #footer .heading{color:#FFFFFF;}
-
+#footer {background: linear-gradient(90deg, #232526 10%, #414345 90%);}
 #footer nav a{color:inherit;}
 #footer nav li:first-child a, #footer nav a:hover{color:#6AAEBF;}
 
@@ -419,7 +419,7 @@ table a, #comments a{background-color:inherit;}
 	#testimonials blockquote{margin-bottom:50px;}
 
 	.cta > :first-child{margin-top:0;}
-	/*.right-margin {margin-right: 0% !important;}*/
+	.right-margin {margin-right: 0% !important;}	
 	/*#footer{padding-bottom:50px;} Not neccessary - just looks better */
 	#remove_it{display: none!important;}
 	#lower_side_bar{display: block!important;}

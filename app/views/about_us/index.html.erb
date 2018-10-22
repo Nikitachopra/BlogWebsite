@@ -1,0 +1,57 @@
+<%= render "layouts/header"%>
+<div class="right-margin" style="background-color: #fff;margin: 0;padding-right: 20%">
+	<%= render "layouts/side_bar"%>
+	<div class="row3">
+		<section class="hoc clear container">
+			<div class="group latest">
+				<div class="txtwrap">
+					<h4 class="heading no_padding">About Us</h4>
+					<%= AboutU.first.content %>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div id="lower_side_bar" class="w3-bar-block w3-card " style="display: none; width: 100%!important;">
+  <!-- <h3 class="w3-bar-item">Menu</h3> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 1</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 2</a> -->
+  <!-- <a href="#" class="w3-bar-item w3-button">Link 3</a> -->
+  <div class="w3-bar-item"  style="padding-top: 30px;">
+    <form class="" action="/articles" method="get">
+      <input type="search" name="sq" placeholder="Search"  style="display: inline;">
+      <button type="submit colored-div"><i class="fa fa-search" style="display: inline!important;background-color: #4CAF50!important; border:none!important;"></i></button>
+    </form>
+  </div>
+  <div class="w3-bar-item colored-div"  style="margin-top: 30px;">
+    Recieve new posts via email
+  </div>
+  Enter your email address to receive new posts immediately by email.
+  <div class="w3-bar-item" style="padding-top: 20px;">
+    <form class="" action="/" method="post">
+      <input type="text" name="email">
+      <button type="submit colored-div w3-button" style="margin: 5px; background-color: #4CAF50!important; border:none!important;">Subscribe</button>
+    </form>
+  </div>
+</div>
+</div>
+<%= render "layouts/footer"%>
+<script type="text/javascript">
+	$(window).resize(function() {
+    var div = document.getElementById("remove_it");
+    if( $(this).width() < 700 ) {
+        // $("#to_be_changed").classList.add("rightest-margin");
+        // div.classList.remove("my_side_bar");
+        // $(".w3-card").classList.remove('my_side_bar');
+        // $("#remove_it").offset({top: $(".bottom").offset().top + $(".bottom").height()});
+        // div.classList.add("padded-bottom");
+      //   $("#remove_it").css({'display' : 'none'});
+      // $("#lower_side_bar").css({'display' : 'block'});
+
+    } else{
+      div.classList.add("my_side_bar");
+      div.classList.remove("padded-bottom");
+      var offset = $("#navbar").offset().top + $("#navbar").height();
+      $('.my_side_bar').offset({top:offset});
+    }
+});
+</script>

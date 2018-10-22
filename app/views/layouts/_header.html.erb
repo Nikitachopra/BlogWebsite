@@ -3,9 +3,9 @@
 </div>
 
 <div id="navbar">
-  <a class="active" href="/">Home</a>
-  <a href="javascript:void(0)">Articles</a>
-  <a href="javascript:void(0)">About <%= ORG_NAME%></a>
+  <a class="<%= controller_name != "about_us" ? "active" : "" %>" href="/">Home</a>
+  <!-- <a href="javascript:void(0)">Articles</a> -->
+  <a href="/about_us" class="<%= controller_name == 'about_us' && action_name == 'index' ? 'active' : '' %>">About <%= ORG_NAME%></a>
 </div>
 
 

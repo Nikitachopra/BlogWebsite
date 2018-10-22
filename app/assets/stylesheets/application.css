@@ -14,5 +14,7 @@
  *= require_fontawesome-4.6.3.min
  *= require_layout
  *= require_w3
+ *= require_style
+ *= require social-share-button
  *= require_self
  */

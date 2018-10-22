@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require jquery.min
 //= require all_js_file
+//= require socialshare
+//= require social-share-button
 //= require_tree .

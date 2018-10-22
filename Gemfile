@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'pg'
+# gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -56,10 +56,13 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'daemon-spawn'
 
+#socialshare
+gem 'social-share-button'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 end
 
 group :development do
